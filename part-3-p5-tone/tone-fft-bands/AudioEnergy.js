@@ -1,7 +1,7 @@
 /*
-* Credit to Matt DesLauriers @mattdesl
-* https://glitch.com/edit/#!/dfpi-audio-fft-simple?path=AudioEnergy.js%3A1%3A0
-*/
+ * Credit to Matt DesLauriers @mattdesl
+ * https://glitch.com/edit/#!/dfpi-audio-fft-simple?path=AudioEnergy.js%3A1%3A0
+ */
 
 class AudioEnergy extends Tone.Analyser {
   constructor(sampleCount = 2048) {
@@ -13,7 +13,7 @@ class AudioEnergy extends Tone.Analyser {
       lowMid: [140, 400],
       mid: [400, 2600],
       highMid: [2600, 5200],
-      treble: [5200, 14000]
+      treble: [5200, 14000],
     };
   }
 
@@ -112,6 +112,9 @@ class AudioEnergy extends Tone.Analyser {
     const buffer = this._buffer;
     let total = 0;
     let numFrequencies = 0;
+
+    console.log("buffer: ", buffer);
+
     // add up all of the values for the frequencies
     for (let i = lowIndex; i <= highIndex; i++) {
       total += buffer[i];

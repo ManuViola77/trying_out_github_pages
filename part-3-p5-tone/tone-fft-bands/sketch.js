@@ -19,7 +19,7 @@ function setup() {
   analyser = new AudioEnergy();
 
   // setup our player with an audio file
-  player = new Tone.Player('reverse-arp.wav');
+  player = new Tone.Player("reverse-arp.wav");
   // player = new Tone.Player('zimbalom.wav');
   player.loop = true;
   player.autostart = false;
@@ -29,9 +29,7 @@ function setup() {
 }
 
 function draw() {
- 
   if (isPlaying) {
-
     // Ensure everything is loaded first
     if (!player || !analyser) return;
 
@@ -46,27 +44,31 @@ function draw() {
     if (isPlaying) {
       const diameter = width * 0.2;
       const freqRanges = [
-        
-        { name: 'bass', color: '#355C7D' },
-        { name: 'lowMid', color: '#6C5B7B' },
-        { name: 'mid', color: '#C06C84' },
-        { name: 'highMid', color: '#F67280' },
-        { name: 'treble', color: '#F8B195' }
+        { name: "bass", color: "#355C7D" },
+        { name: "lowMid", color: "#6C5B7B" },
+        { name: "mid", color: "#C06C84" },
+        { name: "highMid", color: "#F67280" },
+        { name: "treble", color: "#F8B195" },
       ];
 
       for (let i = 0; i < freqRanges.length; i++) {
         const hexColor = freqRanges[i].color;
-        const name     = freqRanges[i].name;
-        const energy   = analyser.getEnergy(name);
-        const scale    = map(energy, -100, -30, 0, 1);
+        const name = freqRanges[i].name;
+        const energy = analyser.getEnergy(name);
+        const scale = map(energy, -100, -30, 0, 1);
 
         fill(hexColor);
 
-        const finalDiameter = diameter + scale * diameter
-        ellipse(i * (width * 0.2) + diameter/2, height/2, finalDiameter, finalDiameter);
+        const finalDiameter = diameter + scale * diameter;
+        ellipse(
+          i * (width * 0.2) + diameter / 2,
+          height / 2,
+          finalDiameter,
+          finalDiameter
+        );
 
         fill(21, 21, 21);
-        text(name, i * (width * 0.2) + diameter/2, height/2);
+        text(name, i * (width * 0.2) + diameter / 2, height / 2);
       }
     }
   }

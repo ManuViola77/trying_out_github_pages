@@ -11,7 +11,7 @@ function setup() {
   textAlign(CENTER, CENTER);
 
   // setup our player with an audio file
-  player = new Tone.Player('kick.wav').toDestination();
+  player = new Tone.Player("kick.wav").toDestination();
   player.loop = true;
   player.autostart = false;
 }
@@ -20,7 +20,7 @@ function draw() {
   background(250, 200, 250);
   if (isPlaying) {
     fill(0);
-    text('KICK', width/2, height/2);
+    text("KICK", width / 2, height / 2);
   }
 }
 
